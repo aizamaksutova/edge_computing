@@ -12,7 +12,7 @@ for i in "${array[@]}"; do
     ./StressorScript.sh >/dev/null &
   done
   sleep 5
-  ./try
+  ./gpu_operations
   mv inference_timings.txt $i.txt
   ./killStressor.sh
 done
