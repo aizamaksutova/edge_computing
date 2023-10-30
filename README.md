@@ -1,6 +1,6 @@
 # edge_computing
 
-## Benchmarking NVIDIA Jetson AGX Orin storage
+## Storage performance benchmarking OF NVIDIA Jetson AGX Orin 
 
 ## Notation
 
@@ -10,6 +10,15 @@
 | SLAT  | submission latency, the time it took to submit the I/O |  usec |
 | CLAT  | completion latency, the time from submission to completion of the I/O pieces |  usec |
 | TLAT  | total latency, the time from when Fio created the I/O unit to the completion of the I/O operation. |  usec |
+
+## Experiments
+
+Storage performance benchmarking was done by using the [FIO linux tool](https://portal.nutanix.com/page/documents/kbs/details?targetId=kA07V000000LX7xSAG#:~:text=Flexible%20IO%20Tester%20(Fio)%20is,used%20for%20storage%20performance%20benchmarking.) which ensures data randomness, avoids OS level caching in order to benchmark only the underlying storage. All the tests were run separately to ensure clarity of results and benchmark certain processes in isolation. 
+
+#### Standard command line for running a FIO test:
+```
+fio --name=fiotest --filename=/home/test1 --size=16Gb --rw=randread --bs=8K --direct=1 --numjobs=8 --ioengine=libaio --iodepth=32 --group_reporting --runtime=60 --startdelay=60
+```
 
 ## Results
 
