@@ -35,3 +35,7 @@ fio --name=fiotest --filename=/home/test1 --size=16Gb --rw=randread --bs=8K --di
 
 ![CDF](https://github.com/aizamaksutova/edge_computing/blob/main/imgs/cdf_edge.png)
 
+## Comparison between Hugging Face Tensor and Accelerate methods for model loading [TBD]
+
+![description](https://github.com/aizamaksutova/edge_computing/blob/main/imgs/hf_tensor_accelerate.png)
+
