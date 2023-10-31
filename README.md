@@ -30,3 +30,8 @@ fio --name=fiotest --filename=/home/test1 --size=16Gb --rw=randread --bs=8K --di
 | Read | Random reads | 16 GB | 64 Kb | Imitates medium block size workload for reads.  | 3619 | 3683.59 | 4097 | 7 | 26.46 | 2016 | 295 | 2140.07 | 9425 | 2933 | 3687 | 5932 | 308 | 2166.84 | 9483 |
 | Write | Random writes | 16 GB | 8 Kb | Imitates common database workload simulation for writes. [small workloads]  | 291,4 | 511,5 | 935 | 5 | 117.1 | 6988 | 3 | 3786.24 | 24748 | 5866 | 7177 | 20055 | 141 | 3903.65 | 24805 |
 | Read | Random reads | 16 GB | 8 Kb | Imitates common database workload simulation for reads. [small workloads]  | 1649 | 1671.51 | 1689 | 3 | 9.75 | 4676 | 146 | 1185.44 | 9355 | 1647 | 2073 | 3392 | 171 | 1195.36 | 9366 |
+
+#### CDF Graph
+
+![CDF](https://github.com/aizamaksutova/edge_computing/blob/main/imgs/cdf_edge.png)
+
