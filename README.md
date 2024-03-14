@@ -1,5 +1,10 @@
 # edge_computing
 
+## Draft of the paper
+
+[Link](https://github.com/aizamaksutova/edge_computing/blob/main/proposal.pdf) to the first draft of the paper 
+
+
 ## Storage performance benchmarking OF NVIDIA Jetson AGX Orin 
 
 ## Notation
