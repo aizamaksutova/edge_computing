@@ -3,7 +3,7 @@
 
 
 
-## Analysis of SSD and DRAM Interaction
+# Analysis of SSD and DRAM Interaction
 
 ## Experiments
 
@@ -31,4 +31,30 @@ The hypothesis in this experiment was that increasing the load on the PCIe bus w
 Analysis of smaller block sizes (below 15KB) in figure below revealed a gradual increase in bandwidth, illustrating poor occupation of the PCIe bus with minimal I/O load; for instance, a block size of 64KB achieved only 0.09 GB/s. These findings confirm that to fully utilize the PCIe's capacity on the Jetson AGX Orin, a minimum block size of 0.5 GB is necessary, and it must be processed concurrently to achieve optimal data transfer rates. This experiment substantiates our hypothesis that larger block sizes result in more efficient utilization of the available bandwidth on the PCIe bus.
 
 ![](https://github.com/aizamaksutova/edge_computing/blob/main/imgs/fio_1.png)
+
+
+
+# Analysis of eMMC Flash Memory and DRAM Interaction
+
+In our experimental setup, we aimed to test the read speed of eMMC flash memory, commonly used in AV pipelines where rapid data transfer to DRAM for GPU processing is crucial. Using the Unix 'dd' command, we conducted tests transferring various data sizes with different block sizes (bs param). This approach tested the hypothesis that larger data chunks transferred simultaneously could maximize bandwidth utilization and accelerate the transfer process. The specific paths to the files on the eMMC flash memory were identified using the `lsblk -o KNAME,TYPE,SIZE,MODEL` command (as before in SSD analysis). For eMMC Flash Memory the storage device's path starts with mmcblk.
+
+
+
+#### Standard command line for running a dd test
+
+```
+dd if=/dev/mmcblk3 of=/dev/null bs=1G count=1 iflag=direct
+
+```
+```
+bs - block size
+count - number of blocks
+iflag - parameter to set up the i/o mode 
+```
+
+Our experimental results strongly support the hypothesis that smaller block sizes only partially utilize the bandwidth between eMMC flash memory and DRAM, resulting in suboptimal performance. This is particularly evident when using a 1KB block size, where bandwidth usage could be much better (the average bandwidth, according to the table, is 4 MB/s). Conversely, a block size of 4096 KB (4 MB) and bigger maximize bandwidth utilization, achieving speeds around 270 MB/s. Importantly, increasing the block size further provides no substantial improvement in bandwidth utilization. For instance, block sizes larger than 64 MB (64000 KB) yield only some of the insights and tend to clutter the graphical representation of our data. Therefore, our data unequivocally demonstrates that transferring larger data chunks—greater than 4 MB—optimizes bandwidth usage, thereby enhancing data transfer efficiency between eMMC and DRAM.
+
+
+![](https://github.com/aizamaksutova/edge_computing/blob/main/imgs/emmc.png)
+
 
