@@ -1,4 +1,4 @@
-# edge_computing
+# Optimizing Resource Management in Autonomous Vehicle Systems
 
 
 
